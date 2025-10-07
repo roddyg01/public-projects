@@ -1,0 +1,29 @@
+{
+  "servers": [
+    {
+      "name": "Web Server",
+      "host": "192.168.1.100",
+      "username": "admin",
+      "key_path": "~/.ssh/id_rsa"
+    },
+    {
+      "name": "Database Server",
+      "host": "192.168.1.101",
+      "username": "dbadmin",
+      "key_path": "~/.ssh/id_rsa"
+    }
+  ],
+  "thresholds": {
+    "disk": 85,
+    "cpu": 80,
+    "memory": 85
+  },
+  "email": {
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "from": "alerts@domain.com",
+    "to": "you@domain.com",
+    "username": "alerts@domain.com",
+    "password": "your-app-password"
+  }
+}
