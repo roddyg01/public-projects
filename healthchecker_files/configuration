@@ -1,0 +1,40 @@
+# Configuration
+Copy config_example.json to config.json and edit:
+
+cp config_example.json config.json
+
+This will Configure your servers, thresholds, and email settings.
+
+# SSH Setup
+Generate SSH key and copy to servers:
+
+ssh-keygen -t ed25519
+ssh-copy-id user@server
+
+# Email Setup (Gmail)
+
+Enable 2FA on your Google account
+Generate an app-specific password at Google Account Security
+Use the app password in config.json
+
+# Usage
+Run manually:
+
+python3 health_checker.py config.json
+
+## Example output:
+=== System Health Check - 2025-10-07 10:30:00 ===
+
+Checking Web Server (192.168.1.100)...
+  ✓ disk: 45%
+  ✓ cpu: 23.5%
+  ✗ memory: 87%
+
+Alert sent to you@domain.com
+
+# Automation
+Add to crontab for hourly checks:
+
+crontab -e
+
+Then, add line: 0 * * * * /usr/bin/python3 /path/to/health_checker.py /path/to/config.json
