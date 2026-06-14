@@ -16,7 +16,7 @@ Most people have no idea how much their photos reveal. A single image straight o
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/exif-geo-osint.git
+git clone https://github.com/roddyg01/exif-geo-osint.git
 cd exif-geo-osint
 pip install .
 ```
