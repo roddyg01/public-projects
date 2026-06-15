@@ -1,0 +1,122 @@
+[
+  {
+    "Name": "Adobe",
+    "Title": "Adobe",
+    "Domain": "adobe.com",
+    "BreachDate": "2013-10-04",
+    "AddedDate": "2013-12-04T00:00:00Z",
+    "PwnCount": 152445165,
+    "DataClasses": ["Email addresses", "Password hints", "Passwords", "Usernames"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "In October 2013, 153 million Adobe accounts were breached."
+  },
+  {
+    "Name": "LinkedIn",
+    "Title": "LinkedIn",
+    "Domain": "linkedin.com",
+    "BreachDate": "2012-05-05",
+    "AddedDate": "2016-05-21T21:35:40Z",
+    "PwnCount": 164611595,
+    "DataClasses": ["Email addresses", "Passwords"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "In May 2012, LinkedIn was breached and passwords were exposed."
+  },
+  {
+    "Name": "MySpace",
+    "Title": "MySpace",
+    "Domain": "myspace.com",
+    "BreachDate": "2008-07-01",
+    "AddedDate": "2016-05-31T00:00:00Z",
+    "PwnCount": 359420698,
+    "DataClasses": ["Email addresses", "Passwords", "Usernames"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "Approximately 360 million MySpace accounts were exposed."
+  },
+  {
+    "Name": "Dropbox",
+    "Title": "Dropbox",
+    "Domain": "dropbox.com",
+    "BreachDate": "2012-07-01",
+    "AddedDate": "2016-08-31T00:00:00Z",
+    "PwnCount": 68648009,
+    "DataClasses": ["Email addresses", "Passwords"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "Dropbox suffered a data breach exposing 68 million accounts."
+  },
+  {
+    "Name": "Canva",
+    "Title": "Canva",
+    "Domain": "canva.com",
+    "BreachDate": "2019-05-24",
+    "AddedDate": "2019-08-08T00:00:00Z",
+    "PwnCount": 137272116,
+    "DataClasses": ["Email addresses", "Geographic locations", "Names", "Passwords", "Usernames"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "In May 2019, Canva suffered a breach affecting 137 million users."
+  },
+  {
+    "Name": "Collection1",
+    "Title": "Collection #1",
+    "Domain": "",
+    "BreachDate": "2019-01-07",
+    "AddedDate": "2019-01-16T21:46:07Z",
+    "PwnCount": 772904991,
+    "DataClasses": ["Email addresses", "Passwords"],
+    "IsVerified": false,
+    "IsSensitive": false,
+    "Description": "A large collection of credential stuffing lists."
+  },
+  {
+    "Name": "Equifax",
+    "Title": "Equifax",
+    "Domain": "equifax.com",
+    "BreachDate": "2017-07-29",
+    "AddedDate": "2017-09-08T00:00:00Z",
+    "PwnCount": 147900000,
+    "DataClasses": ["Email addresses", "Names", "Social security numbers", "Credit cards", "Geographic locations"],
+    "IsVerified": true,
+    "IsSensitive": true,
+    "Description": "The Equifax breach exposed highly sensitive financial data."
+  },
+  {
+    "Name": "Yahoo",
+    "Title": "Yahoo",
+    "Domain": "yahoo.com",
+    "BreachDate": "2013-08-01",
+    "AddedDate": "2017-10-04T00:00:00Z",
+    "PwnCount": 3000000000,
+    "DataClasses": ["Email addresses", "Passwords", "Names", "Security questions and answers", "Dates of birth"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "All 3 billion Yahoo accounts were affected."
+  },
+  {
+    "Name": "Twitter200M",
+    "Title": "Twitter (200M)",
+    "Domain": "twitter.com",
+    "BreachDate": "2021-01-01",
+    "AddedDate": "2023-01-05T00:00:00Z",
+    "PwnCount": 211524284,
+    "DataClasses": ["Email addresses", "Names", "Usernames", "Social media profiles"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "A scraped dataset of 200 million Twitter users."
+  },
+  {
+    "Name": "Facebook",
+    "Title": "Facebook",
+    "Domain": "facebook.com",
+    "BreachDate": "2019-08-01",
+    "AddedDate": "2021-04-03T00:00:00Z",
+    "PwnCount": 509458528,
+    "DataClasses": ["Phone numbers", "Email addresses", "Names", "Geographic locations", "Genders"],
+    "IsVerified": true,
+    "IsSensitive": false,
+    "Description": "Scraped data from over 500 million Facebook users."
+  }
+]
