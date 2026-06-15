@@ -2,7 +2,7 @@
 
 A command-line tool that turns Have I Been Pwned breach data into a timeline and exposure analysis. It works two ways: it can map the entire public breach landscape with no API key, or — with a key — show you the chronological exposure history of a specific email address.
 
-Most breach checkers answer a yes/no question: *has this address been pwned?* That's useful, but it throws away the interesting part. `breachtl` keeps the dimension that actually tells a story — **time**. When did the exposures happen? What kind of data leaked, and when did that shift from "just email addresses" to "passwords and financial data"? Is exposure clustered in a few bad years or spread evenly? A timeline answers questions a count cannot.
+Most breach checkers answer a yes/no question: *has this address been pwned?* That's useful, but it throws away the interesting part. `breachtl` keeps the dimension that tells a story — **time**. When did the exposures happen? What kind of data leaked, and when did that shift from "just email addresses" to "passwords and financial data"? Is exposure clustered in a few bad years or spread evenly?
 
 ## What it does
 
@@ -118,8 +118,6 @@ python3 -m breachtl.cli --landscape --from-file sample_catalog.json
 ## How it compares
 
 Plenty of tools wrap the HIBP API, and the official site already tells you what you need for a single lookup. `breachtl` is narrower and more specific: it exists to make the **temporal and categorical shape** of breach data visible. The landscape timeline is something the basic checkers don't give you at all — it's a view of how the breach problem has evolved year over year, which is genuinely useful for understanding the threat landscape rather than just auditing one address.
-
-It's not trying to be a full threat-intelligence platform. It does one thing: take breach data and show you its shape over time.
 
 ## Responsible use
 
