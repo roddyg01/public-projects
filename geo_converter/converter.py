@@ -7,7 +7,7 @@ m = mgrs.MGRS()
 # conversion functions
 
 def dd_to_mgrs(lat, lon):
-    return m.toMGRS(lat, lon).decode()
+    return m.toMGRS(lat, lon)
 
 def mgrs_to_dd(mgrs_coord):
     lat, lon = m.toLatLon(mgrs_coord)
