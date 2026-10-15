@@ -15,7 +15,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Rodrigo Garcia",
-    url="https://github.com/roddyg01/exif-geo-osint",
+    url="https://github.com/roddyg01/public-projects/tree/main/exif-geo-osint",
     packages=find_packages(exclude=["tests"]),
     install_requires=["Pillow>=9.0"],
     python_requires=">=3.9",

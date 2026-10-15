@@ -1,40 +1,73 @@
-# exifgeo
+# exif-geo-osint
 
-A command-line tool for extracting EXIF metadata and GPS coordinates from images, and flagging the fields that carry privacy or operational-security implications.
+A command-line tool (`exifgeo`) that reads EXIF metadata from images, pulls out GPS coordinates, and flags fields that leak personal or device information.
 
-Most people have no idea how much their photos reveal. A single image straight off a phone can contain the exact GPS coordinates where it was taken, the precise timestamp, the device model, and sometimes a uniquely identifying serial number. `exifgeo` surfaces all of it in a clean report so you can see what a file is quietly giving away — whether you're auditing your own photos before posting them or doing open-source research on images you're authorized to inspect.
+> **For lawful, ethical research only.** Only analyze images you own or are authorized to inspect. The data this tool surfaces — location, timestamps, device details — is sensitive. Use it to protect privacy, not to violate it.
 
-## Features
+## What it does
 
-- GPS extraction — converts EXIF degree/minute/second coordinates into decimal degrees and generates a ready-to-click map link.
-- Privacy risk scoring — each image is rated `NONE` / `LOW` / `MEDIUM` / `HIGH` based on what it exposes.
-- Sensitive-field flagging — highlights device serial numbers, timestamps, software versions, and other identifying metadata.
-- Batch and recursive scanning — point it at a whole directory and filter for only the images that carry location data.
-- JSON output — machine-readable output for piping into other tools or pipelines.
-- Zero network calls — everything runs locally. The tool never uploads or transmits the images it reads.
+- Reads EXIF data from any image Pillow can open (JPEG, TIFF, PNG, WebP). HEIC files are picked up in folder scans but need an extra Pillow plugin to open.
+- Converts GPS coordinates from degrees/minutes/seconds to decimal and builds a Google Maps link.
+- Flags sensitive fields when present: GPS, timestamps, make, model, software version, serial numbers, host computer, and unique image ID.
+- Rates each image's privacy risk:
+  - `HIGH` — GPS coordinates present
+  - `MEDIUM` — other sensitive fields present
+  - `LOW` — EXIF present, nothing sensitive
+  - `NONE` — no EXIF
+- Scans a whole folder, with an option to recurse and an option to show only images with GPS.
+- Outputs a terminal report or JSON.
+- Runs locally. It makes no network calls.
 
-## Installation
+## Why it's useful
+
+Photos straight off a phone often carry the exact spot they were taken, the time, and the device. Most people don't know that. Run this before you post a photo to see what it gives away. In OSINT work, it's a quick first pass on images you're allowed to examine.
+
+## Requirements
+
+- Python 3.9+
+- Pillow (see `requirements.txt`)
+
+## How to run it
 
 ```bash
-git clone https://github.com/roddyg01/exif-geo-osint.git
-cd exif-geo-osint
+git clone https://github.com/roddyg01/public-projects.git
+cd public-projects/exif-geo-osint
 pip install .
 ```
 
-Or run it directly without installing:
+That installs the `exifgeo` command. To run it without installing:
 
 ```bash
-pip install Pillow
+pip install -r requirements.txt
 python -m exifgeo.cli photo.jpg
 ```
 
-## Usage
-
-Analyze a single image:
+Usage:
 
 ```bash
-exifgeo photo.jpg
+exifgeo photo.jpg                       # one image
+exifgeo ~/Pictures --recursive --gps-only   # folder, only images with GPS
+exifgeo photo.jpg --json                # JSON output
+exifgeo photo.jpg --verbose             # include every EXIF tag
 ```
+
+| Flag | Description |
+|------|-------------|
+| `-j`, `--json` | Output JSON instead of a terminal report. |
+| `-r`, `--recursive` | Include subfolders when the target is a folder. |
+| `-v`, `--verbose` | Include the full metadata dump. |
+| `--gps-only` | Only show images that have GPS coordinates. |
+| `--no-color` | Turn off colors. |
+
+Run the tests:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+## Example output
+
+A test image tagged with the Eiffel Tower's coordinates:
 
 ```
 ============================================================
@@ -53,51 +86,24 @@ exifgeo photo.jpg
   SENSITIVE FIELDS PRESENT
   ------------------------------
   ! GPSInfo: Precise location where the photo was taken
+  ! DateTime: File modification timestamp
+  ->  2024:05:01 14:22:10
   ! Make: Camera or phone manufacturer
+  ->  Apple
   ! Model: Specific device model
+  ->  iPhone 13
+  ! Software: Operating system / software version on the device
+  ->  17.4
+
 ============================================================
 ```
 
-Scan a directory and show only images that contain GPS data:
+An image with no metadata:
 
-```bash
-exifgeo ~/Pictures --recursive --gps-only
 ```
+  Privacy risk: [NONE]
 
-Emit JSON for use in another tool:
-
-```bash
-exifgeo photo.jpg --json
-```
-
-Show the complete metadata dump:
-
-```bash
-exifgeo photo.jpg --verbose
-```
-
-### Options
-
-| Flag | Description |
-|------|-------------|
-| `-j`, `--json` | Output machine-readable JSON instead of a terminal report. |
-| `-r`, `--recursive` | Descend into subdirectories when the target is a folder. |
-| `-v`, `--verbose` | Include the full metadata dump in the report. |
-| `--gps-only` | Only display images that contain GPS coordinates. |
-| `--no-color` | Disable ANSI colors (useful when redirecting output to a file). |
-
-## Why this exists
-
-This started as a way to demonstrate, concretely, how location metadata leaks through ordinary photos. The same capability cuts two ways: defensively, it lets you audit what your own images expose before you share them; in research, it's a building block for open-source investigation work. The privacy-risk scoring and sensitive-field flagging are there to make the "so what" obvious at a glance rather than burying it in a wall of raw tags.
-
-## Responsible use
-
-Only analyze images you own or are authorized to inspect. This tool reads metadata that is already present in files you provide — it does not bypass any protection or access anything remotely — but the information it surfaces (precise location, timestamps, device identifiers) is sensitive by nature. Use it to protect privacy, not to violate it.
-
-## Running the tests
-
-```bash
-python -m unittest discover -s tests -v
+  No EXIF metadata found. This file has been stripped or never had any.
 ```
 
 ## License

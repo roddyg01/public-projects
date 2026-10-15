@@ -15,7 +15,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Rodrigo Garcia",
-    url="https://github.com/YOUR_USERNAME/breach-timeline",
+    url="https://github.com/roddyg01/public-projects/tree/main/breach-timeline",
     packages=find_packages(exclude=["tests"]),
     install_requires=[],  # standard library only
     python_requires=">=3.9",

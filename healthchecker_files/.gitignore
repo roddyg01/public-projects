@@ -1,0 +1,13 @@
+# Real config holds server addresses and the SMTP password
+config.json
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+
+# OS
+.DS_Store
